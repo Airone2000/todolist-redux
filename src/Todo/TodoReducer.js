@@ -1,4 +1,4 @@
-import {cloneDeep} from 'lodash';
+import {cloneDeep, find} from 'lodash';
 
 const todoInitialState = {
   todos: [
@@ -11,8 +11,10 @@ function todoReducer(state = todoInitialState, action) {
   switch(action.type) {
     case 'TOGGLE_TODO':
       const newState = cloneDeep(state);
-      const todo = newState.todos.find(todo => todo.id === action.todoId);
-      todo.done = !todo.done;
+      const todo = find(newState.todos, ['id', action.todoId]);
+      if(todo){
+        todo.done = !todo.done;
+      }
       return newState;
 
     default:
