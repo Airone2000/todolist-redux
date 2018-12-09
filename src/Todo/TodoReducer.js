@@ -8,13 +8,20 @@ const todoInitialState = {
 };
 
 function todoReducer(state = todoInitialState, action) {
+
+  const newState = cloneDeep(state);
+
   switch(action.type) {
     case 'TOGGLE_TODO':
-      const newState = cloneDeep(state);
-      const todo = find(newState.todos, ['id', action.todoId]);
+      const todo = find(newState.todos, ['id', action.todoId])
       if(todo){
         todo.done = !todo.done;
       }
+      return newState;
+
+    case 'ADD_TODO':
+      const newTodo = {id: state.todos.length + 1, title: action.task, done: false};
+      newState.todos.push(newTodo);
       return newState;
 
     default:

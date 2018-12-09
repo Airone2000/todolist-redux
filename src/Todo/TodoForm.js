@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {createRef} from 'react';
+import {connect} from 'react-redux';
 
-export default function TodoForm() {
+function TodoFormRaw({dispatch, history, ...rest}) {
+  const ref = createRef();
   return (
-    <form>
-      <input type="text" placeholder="Nouvelle tâche ..." />
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      dispatch({type:'ADD_TODO', task: ref.current.value});
+      ref.current.value = '';
+      history.push('/');
+    }}>
+      <input type="text" placeholder="Nouvelle tâche ..." ref={ref} />
     </form>
   );
 }
+
+const TodoForm = connect()(TodoFormRaw);
+export default TodoForm;

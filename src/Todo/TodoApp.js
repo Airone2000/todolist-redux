@@ -10,7 +10,7 @@ export default function TodoApp() {
       <Router>
         <React.Fragment>
           <div className="todo-app-header">
-            <Link to="add-todo" />
+            <Link to="add-todo">+ TODO</Link>
           </div>
 
           <Route path="/" exact component={TodoList} />
