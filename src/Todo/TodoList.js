@@ -6,7 +6,9 @@ function TodoListRaw({todos}) {
   return (
     <ul className="todo-list">
       {todos.map(todo => 
-        <Todo key={todo.id} title={todo.title} />
+        <li className="todo-item" key={todo.id}>
+          <Todo todo={todo} />
+        </li>
       )}
     </ul>
   );
