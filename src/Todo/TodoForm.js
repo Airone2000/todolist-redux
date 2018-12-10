@@ -6,9 +6,12 @@ function TodoFormRaw({dispatch, history, ...rest}) {
   return (
     <form className="add-todo-form" onSubmit={(e) => {
       e.preventDefault();
-      dispatch({type:'ADD_TODO', task: ref.current.value});
-      ref.current.value = '';
-      history.push('/');
+
+      let value = ref.current.value.trim();
+      if(value.length > 0) {
+        dispatch({type:'ADD_TODO', task: value});
+        history.push('/');
+      }
     }}>
       <input type="text" className="add-todo-input" placeholder="Nouvelle tâche ..." ref={ref} />
       <p>
