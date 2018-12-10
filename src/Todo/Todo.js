@@ -11,7 +11,7 @@ function TodoRaw({todo, dispatch}) {
     }}>
       <label>
         <input type="checkbox" checked={todo.done} readOnly />
-        {todo.title}
+        <span className={todo.done && 'todo-done'}>{todo.title}</span>
       </label>
     </div>
   );

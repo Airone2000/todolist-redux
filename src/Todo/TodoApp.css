@@ -1,6 +1,8 @@
 *
 {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  user-select: none;
 }
 
 .todo-app
@@ -26,4 +28,31 @@
 .todo-item
 {
   padding: 10px;
+}
+
+.add-todo
+{
+  background-color: #fff;
+  color: #333;
+  padding: 3px;
+  text-decoration:none;
+}
+
+.add-todo-form
+{
+  padding: 10px;
+}
+
+.add-todo-input
+{
+  width: 100%;
+  padding: 5px;
+  outline: 0;
+  border: 2px solid #ED7F10;
+  font-size: 20px;
+}
+
+.todo-done
+{
+  text-decoration: line-through;
 }
